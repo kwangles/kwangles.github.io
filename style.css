@@ -1,0 +1,566 @@
+/* body {
+  text-align: center;
+  background-color: #f0e8c5;
+} */
+
+
+* {
+	box-sizing: border-box;
+}
+
+#app {
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100vw;
+	height: 100vh;
+	background-color: #f9f9f9;
+}
+
+.gift-pack-wrapper {
+	animation: move-gifts 40s infinite linear;
+	will-change: transform;
+	display: flex;
+	flex-wrap: wrap;
+	align-content: flex-start;
+	width: 220vw;
+	height: 100vh;
+}
+
+.gift-pack {
+	perspective: 400px;
+	width: 20vw;
+	height: 20vw;
+}
+
+.gift-pack-cube {
+	animation: rotate-gift-pack 30s infinite linear;
+	will-change: transform;
+	transform-style: preserve-3d;
+	transform: translate3d(-50%, -50%, -100px);
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	width: 12vw;
+	height: 12vw;
+}
+
+.gift-pack-cube .face {
+	transform-style: preserve-3d;
+	position: absolute;
+	width: 12vw;
+	height: 12vw;
+	background: linear-gradient(to bottom, transparent 35%, #27AAE0 35%, #27AAE0 65%, transparent 65%),
+              linear-gradient(to right, #8855BA 35%, #27AAE0 35%, #27AAE0 65%, #8855BA 65%);
+}
+
+.gift-pack-cube .face:before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	display: block;
+	width: calc(100% + 2vw);
+	height: 1vw;
+	background-color: red;
+	transform: translateZ(1vw) translateY(-30%) translateX(-1vw);
+}
+
+.gift-pack-cube .face:after {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	display: block;
+	width: calc(100% + 2vw);
+	height: 2vw;
+	background-color: #333;
+	transform:  translateY(0%) translateX(-1vw) rotateX(90deg) translateZ(0.5vw);
+}
+
+.gift-pack-cube .top:after,
+.gift-pack-cube .bottom:after,
+.gift-pack-cube .top:before,
+.gift-pack-cube .bottom:before {
+	display: none;
+}
+
+.gift-pack-cube .front { transform: rotateY(  0deg) translateZ(6vw); }
+.gift-pack-cube .right { transform: rotateY( 90deg) translateZ(6vw); }
+.gift-pack-cube .back { transform: rotateY(180deg) translateZ(6vw); }
+.gift-pack-cube .left { transform: rotateY(-90deg) translateZ(6vw); }
+.gift-pack-cube .top { transform: rotateX( 90deg) translateZ(6vw); }
+.gift-pack-cube .bottom { transform: rotateX(-90deg) translateZ(6vw); }
+
+.gift-pack.yellow {
+	background-color: #FFDE17;
+}
+
+.gift-pack.yellow .face {
+	background: linear-gradient(to bottom, transparent 35%, #27AAE0 35%, #27AAE0 65%, transparent 65%),
+              linear-gradient(to right, #8855BA 35%, #27AAE0 35%, #27AAE0 65%, #8855BA 65%);
+}
+
+.gift-pack.yellow .face:before {
+	background-color: #8855BA;
+}
+
+.gift-pack.green {
+	background-color: #00a04a;
+}
+
+.gift-pack.green .face {
+	background: linear-gradient(to bottom, transparent 35%, #ec1c23 35%, #ec1c23 65%, transparent 65%),
+              linear-gradient(to right, #fff 35%, #ec1c23 35%, #ec1c23 65%, #fff 65%);
+}
+
+.gift-pack.green .face:before {
+	background-color: #fff;
+}
+
+.gift-pack.white {
+	background-color: #fff;
+}
+
+.gift-pack.white .face {
+	background: linear-gradient(to bottom, transparent 35%, #00a04a 35%, #00a04a 65%, transparent 65%),
+              linear-gradient(to right, #ec1c23 35%, #00a04a 35%, #00a04a 65%, #ec1c23 65%);
+}
+
+.gift-pack.white .face:before {
+	background-color: #ec1c23;
+}
+
+.gift-pack.pink {
+	background-color: #ec407a;
+}
+
+.gift-pack.pink .face {
+	background: linear-gradient(to bottom, transparent 35%, #ffde17 35%, #ffde17 65%, transparent 65%),
+              linear-gradient(to right, #1166dd 35%, #ffde17 35%, #ffde17 65%, #1166dd 65%);
+}
+
+.gift-pack.pink .face:before {
+	background-color: #1166dd;
+}
+
+.gift-pack.blue {
+	background-color: #27aae0;
+}
+
+.gift-pack.blue .face {
+	background: linear-gradient(to bottom, transparent 35%, #ec407a 35%, #ec407a 65%, transparent 65%),
+              linear-gradient(to right, #ffde17 35%, #ec407a 35%, #ec407a 65%, #ffde17 65%);
+}
+
+.gift-pack.blue .face:before {
+	background-color: #ffde17;
+}
+
+.santa {
+	position: absolute;
+	left: 50%;
+	bottom: 0;
+	transform: translateX(-50%);
+	width: 40vw;
+	height: 30vw;
+}
+
+.santa .body {
+	position: absolute;
+	top: 30%;
+	width: 100%;
+	height: 130%;
+	background-color: #ec1c23;
+	border-radius: 100%;
+}
+
+.santa .face {
+	animation: move-head 1s infinite ease-in-out;
+	position: absolute;
+	left: 50%;
+	top: 25%;
+	transform: translateX(-50%);
+	width: 30%;
+	height: 15%;
+	background-color: #fdc4bf;
+}
+
+.santa .face:before {
+	content: '';
+	position: absolute;
+	left: 0;
+	top: 0;
+	display: block;
+	width: 100%;
+	height: 100%;
+	background-color: #fdc4bf;
+	z-index: 2;
+}
+
+.santa .ear {
+	animation: move-ear 1s infinite ease-in-out;
+	position: absolute;
+	top: 50%;
+	transform: translateY(-40%);
+	width: 40%;
+	height: 0;
+	padding-top: 40%;
+	background: #fdc4bf;
+	border-radius: 100%;
+	z-index: 1;
+}
+
+.santa .ear:before {
+	content: '';
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	display: block;
+	width: 60%;
+	height: 0;
+	padding-top: 60%;
+	background-color: #ff99ba;
+	border-radius: 100%;
+}
+
+.santa .ear-left {
+	right: 80%;
+}
+
+.santa .ear-right {
+	left: 80%;
+}
+
+.santa .eyes {
+	position: absolute;
+	left: 35%;
+	bottom: 2%;
+	z-index: 3;
+	width: 30%;
+	height: 50%;
+}
+
+.santa .eye {
+	position: absolute;
+	bottom: 0;
+	width: 30%;
+	height: 0;
+	padding-top: 30%;
+	background-color: #441100;
+	border-radius: 100%;
+	z-index: 1;
+}
+
+.santa .eye-left {
+	left: 0;
+}
+
+.santa .eye-right {
+	right: 0;
+}
+
+.santa .eye-left span {
+	animation: move-eye-left 1s infinite;
+	position: absolute;
+	left: -10%;
+	top: -50%;
+	display: block;
+	width: 120%;
+	height: 100%;
+	background: #fdc4bf;
+	z-index: 2;
+}
+
+.santa .eye-right span {
+	animation: move-eye-right 0.5s infinite;
+	position: absolute;
+	left: -10%;
+	top: -50%;
+	display: block;
+	width: 120%;
+	height: 100%;
+	background: #fdc4bf;
+	z-index: 2;
+}
+
+.santa .eyebrow {
+	position: absolute;
+	top: 0;
+	width: 30%;
+	height: 25%;
+	background: #fff;
+	z-index: 2;
+}
+
+.santa .eyebrow-left {
+	left: 0;
+}
+
+.santa .eyebrow-right {
+	right: 0;
+}
+
+.santa .eyebrow:before,
+.santa .eyebrow:after {
+	position: absolute;
+	top: 0;
+	content: '';
+	width: 40%;
+	height: 100%;
+	background: #fff;
+	border-radius: 100%;
+}
+
+.santa .eyebrow:before {
+	left: -10%;
+}
+
+.santa .eyebrow:after {
+	right: -10%;
+}
+
+.santa .beard {
+	position: absolute;
+	left: 0;
+	top: 100%;
+	width: 100%;
+	height: 250%;
+	background: #fff;
+	z-index: 4;
+}
+
+.santa .beard:after {
+	content: '';
+	position: absolute;
+	left: 0;
+	top: 100%;
+	transform: translateY(-50%);
+	width: 100%;
+	height: 100%;
+	background: #fff;
+	border-radius: 100%;
+}
+
+.santa .mouth {
+	position: absolute;
+	left: 50%;
+	top: 10%;
+	transform: translateX(-50%);
+	width: 20%;
+	height: 15%;
+	background: #000;
+	z-index: 2;
+}
+
+.santa .mouth:before,
+.santa .mouth:after{
+	content: '';
+	position: absolute;
+	top: 0%;
+	width: 70%;
+	height: 100%;
+	background: #000;
+	border-radius: 100%;
+}
+
+.santa .mouth:before {
+	left: 0;
+	transform: translateX(-50%);
+}
+
+.santa .mouth:after {
+	right: 0;
+	transform: translateX(50%);
+}
+
+.santa .hat {
+	overflow: hidden;
+	position: absolute;
+	left: 0;
+	bottom: 100%;
+	width: 100%;
+	height: 250%;
+	z-index: 2;
+}
+
+.santa .hat .bottom {
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	height: 10%;
+	background: #fff;
+}
+
+.santa .hat .top {
+	overflow: hidden;
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 200%;
+}
+
+.santa .hat .top:before {
+	content: '';
+	position: absolute;
+	left: -31%;
+	top: 30%;
+	display: block;
+	width: 100%;
+	height: 100%;
+	transform: scale(1) scaleY(1.3) rotate(45deg);
+	background: #ec1c23;
+}
+
+.santa .hat .ball {
+	overflow: hidden;
+	position: absolute;
+	left: 50%;
+	top: 0;
+	transform: translateX(-50%);
+	width: 30%;
+	height: 30%;
+	border-radius: 100%;
+	background: #fff;
+	z-index: 2;
+}
+
+.santa .mouth .tongue {
+	animation: stretch-tongue 1s infinite linear;
+	position: absolute;
+	left: -10%;
+	top: 100%;
+	width: 50%;
+	height: 100%;
+	background-color: #ec1c23;
+	z-index: 2;
+}
+
+.santa .mouth .tongue:before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	transform: translateY(-50%);
+	display: block;
+	width: 150%;
+	height: 70%;
+	background-color: #ec1c23;
+	border-radius: 100%;
+}
+
+.santa .mouth .tongue:after {
+	content: '';
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	transform: translateY(50%);
+	display: block;
+	width: 100%;
+	height: 70%;
+	background-color: #ec1c23;
+	border-radius: 100%;
+}
+
+.santa .mouth .tongue-mask {
+	position: absolute;
+	left: 40%;
+	top: 100%;
+	width: 50%;
+	height: 100%;
+	background-color: #fff;
+	z-index: 2;
+}
+
+@keyframes rotate-gift-pack {
+	0% {
+		transform: translate3d(-50%, -50%, -5vw) rotateY(0deg);
+	}
+
+	100% {
+		transform: translate3d(-50%, -50%, -5vw) rotateY(360deg);
+	}
+}
+
+@keyframes move-gifts {
+	0% {
+		transform: translate3d(-100vw, 0, 0);
+	}
+
+	100% {
+		transform: translate3d(0, 0, 0);
+	}
+}
+
+@keyframes move-head {
+	0% {
+		transform: translateX(-50%) translateY(0%);
+	}
+
+	50% {
+		transform: translateX(-50%) translateY(60%);
+	}
+
+	100% {
+		transform: translateX(-50%) translateY(0%);
+	}
+}
+
+@keyframes move-ear {
+	0% {
+		transform:  translate(0, -50%);
+	}
+
+	50% {
+		transform:  translate(0, -60%);
+	}
+
+	100% {
+		transform:  translate(0, -50%);
+	}
+}
+
+@keyframes move-eye-left {
+	0% {
+		top: -50%;
+	}
+
+	30% {
+		top: -100%;
+	}
+
+	40% {
+		top: -50%;
+	}
+}
+
+@keyframes move-eye-right {
+	0% {
+		top: -50%;
+	}
+
+	20% {
+		top: 0;
+	}
+
+	50% {
+		top: -50%;
+	}
+
+	100% {
+		top: -50%;
+	}
+}
+
+@keyframes stretch-tongue {
+	0% {
+		height: 100%;
+	}
+
+	50% {
+		height: 150%;
+	}
+}
