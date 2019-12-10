@@ -1,74 +1,81 @@
-<!DOCTYPE html>
+
 
 <link rel ="stylesheet" href = "style.css" />
 
-<script type="text/javascript" src="index.js"></script>
+<script type="text/javascript" src="index. js"></script>
 
+<link href="https://fonts.googleapis.com/css?family=Calistoga&amp;display=swap" rel="stylesheet">
+
+<!DOCTYPE html>
 <html>
-<head>
-  <title>Kevin Wang's webpage!</title>
-</head>
-<body>
+  <head>
+    <title>Kevin Wang's webpage!</title>
+    </head>
+    <body>
+      <h1>Hello, World!</h1>
+      <h4 id='date'></h4>
 
 
-  <p>Hello World</p>
-
-  <div id="app">
-    <gift-pack-wrapper>
-      <gift-pack v-for="n in giftCount" :n="n"></gift-pack>
-    </gift-pack-wrapper>
-
-    <santa />
-  </div>
-
-  <script type="text/x-template" id="gift-pack-template">
-    <div :class="['gift-pack', className]">
-      <div class="gift-pack-cube">
-        <div class="face front"></div>
-        <div class="face back"></div>
-        <div class="face right"></div>
-        <div class="face left"></div>
-        <div class="face top"></div>
-        <div class="face bottom"></div>
-      </div>
-    </div>
-  </script>
-
-  <script type="text/x-template" id="gift-pack-wrapper-template">
-    <div class="gift-pack-wrapper">
-      <slot></slot>
-    </div>
-  </script>
-
-  <script type="text/x-template" id="santa-template">
-    <div class="santa">
-      <div class="body"></div>
-      <div class="face">
-        <div class="ear ear-left"></div>
-        <div class="ear ear-right"></div>
-
-        <div class="eyes">
-          <div class="eyebrow eyebrow-left"></div>
-          <div class="eyebrow eyebrow-right"></div>
-          <div class="eye eye-left"><span></span></div>
-          <div class="eye eye-right"><span></span></div>
-        </div>
-
-        <div class="beard">
-          <div class="mouth">
-            <div class="tongue"></div>
-            <div class="tongue-mask"></div>
+      <div class="container">
+          <div class="diamond"></div>
+          <div class="star">
+              <div class="star-half"></div>
+              <div class="star-half"></div>
           </div>
-        </div>
-
-        <div class="hat">
-          <div class="top"></div>
-          <div class="ball"></div>
-          <div class="bottom"></div>
-        </div>
+          <div class="diamond"></div>
+          <div class="star">
+              <div class="star-half"></div>
+              <div class="star-half"></div>
+          </div>
+          <div class="diamond"></div>
+          <div class="star">
+              <div class="star-half"></div>
+              <div class="star-half"></div>
+          </div>
+          <div class="diamond"></div>
+          <div class="star">
+              <div class="star-half"></div>
+              <div class="star-half"></div>
+          </div>
+          <div class="diamond"></div>
+          <div class="star">
+              <div class="star-half"></div>
+              <div class="star-half"></div>
+          </div>
+          <div class="diamond"></div>
       </div>
-    </div>
-  </script>
+      <h1 class="seasons-greetings">Merry Christmas!</h1>
+      <div class="container">
+          <div class="diamond"></div>
+          <div class="star">
+              <div class="star-half"></div>
+              <div class="star-half"></div>
+          </div>
+          <div class="diamond"></div>
+          <div class="star">
+              <div class="star-half"></div>
+              <div class="star-half"></div>
+          </div>
+          <div class="diamond"></div>
+          <div class="star">
+              <div class="star-half"></div>
+              <div class="star-half"></div>
+          </div>
+          <div class="diamond"></div>
+          <div class="star">
+              <div class="star-half"></div>
+              <div class="star-half"></div>
+          </div>
+          <div class="diamond"></div>
+          <div class="star">
+              <div class="star-half"></div>
+              <div class="star-half"></div>
+          </div>
+          <div class="diamond"></div>
+      </div>
 
-</body>
-</html>
+
+
+
+      </body>
+  </html>
